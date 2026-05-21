@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -14,3 +15,7 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+=======
+# Arcwell
+Arcwell Architecture is one stop solution for all your concerns. Wellbeing and wellness for all are our main goals. which we accomplish by taking a holistic approach, that involves everything from planning to completion.
+>>>>>>> 20caea14d6d482b0044f9e65d0419d6c320474c4
