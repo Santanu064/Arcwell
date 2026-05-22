@@ -407,6 +407,95 @@ textarea {
   padding: 80px 0;
 }
 
+.project-scroll-section .home-titleheader {
+  margin-bottom: 38px;
+}
+
+.project-scroll-shell {
+  height: 78vh;
+  min-height: 620px;
+  position: relative;
+}
+
+.project-scroll-card {
+  align-items: center;
+  border-radius: 32px;
+  display: grid;
+  gap: 36px;
+  grid-template-columns: 1fr 1.05fr;
+  inset: 0;
+  overflow: hidden;
+  padding: 46px;
+  position: absolute;
+  will-change: transform, filter;
+}
+
+.project-scroll-media {
+  height: 100%;
+  min-height: 430px;
+}
+
+.project-scroll-media .visual-block {
+  border-radius: 18px;
+  height: 100%;
+  min-height: 100%;
+}
+
+.project-scroll-content h3 {
+  font-size: clamp(34px, 4vw, 58px);
+  font-weight: 600;
+  line-height: 1.08;
+}
+
+.project-scroll-content p {
+  font-size: 21px;
+  line-height: 1.45;
+  margin-top: 18px;
+  max-width: 28ch;
+}
+
+.project-scroll-meta {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.project-scroll-meta span {
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+  opacity: 0.9;
+  padding: 8px 14px;
+}
+
+.project-scroll-content strong {
+  display: inline-block;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  margin-top: 24px;
+}
+
+.card-tone-1 {
+  background: #ece7e7;
+  color: #111;
+}
+
+.card-tone-2 {
+  background: #050505;
+  color: #f8f8f8;
+}
+
+.card-tone-3 {
+  background: #d84d2a;
+  color: #fff;
+}
+
+.card-tone-4 {
+  background: #0f0f0f;
+  color: #f5f5f5;
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1140,6 +1229,34 @@ textarea {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .project-scroll-shell {
+    display: grid;
+    gap: 20px;
+    height: auto;
+    min-height: 0;
+  }
+
+  .project-scroll-card {
+    border-radius: 24px;
+    grid-template-columns: 1fr;
+    min-height: 520px;
+    padding: 28px;
+    position: relative;
+  }
+
+  .project-scroll-media {
+    min-height: 260px;
+  }
+
+  .project-scroll-content h3 {
+    font-size: clamp(28px, 5vw, 40px);
+  }
+
+  .project-scroll-content p {
+    font-size: 17px;
+    max-width: none;
+  }
+
   .custom-cardgroup {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1242,6 +1359,30 @@ textarea {
   .footer-inner,
   .contact-page {
     grid-template-columns: 1fr;
+  }
+
+  .project-scroll-card {
+    min-height: 0;
+    padding: 22px;
+  }
+
+  .project-scroll-content h3 {
+    font-size: 30px;
+  }
+
+  .project-scroll-content p {
+    font-size: 15px;
+    margin-top: 12px;
+  }
+
+  .project-scroll-meta span {
+    font-size: 12px;
+    padding: 7px 11px;
+  }
+
+  .project-scroll-content strong {
+    font-size: 14px;
+    margin-top: 16px;
   }
 
   .project-card {

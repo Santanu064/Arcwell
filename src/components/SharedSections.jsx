@@ -1,4 +1,7 @@
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { projects, reviews } from '../data/siteData'
 import VisualBlock from './VisualBlock'
 
@@ -35,18 +38,98 @@ export function ContactStrip() {
   )
 }
 
-export function ProjectsSection() {
+export function ProjectsSection({ animated = false }) {
+  const rootRef = useRef(null)
+  const cardsRef = useRef([])
+  const projectsPreview = projects.slice(0, 4)
+
+  useEffect(() => {
+    if (!animated) return undefined
+
+    gsap.registerPlugin(ScrollTrigger)
+    const mm = gsap.matchMedia()
+
+    mm.add('(min-width: 992px)', () => {
+      const cards = cardsRef.current.filter(Boolean)
+      if (!rootRef.current || !cards.length) return
+
+      gsap.set(cards, {
+        yPercent: (index) => (index === 0 ? 0 : 110),
+        scale: 1,
+        filter: 'brightness(1)',
+      })
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: rootRef.current,
+          start: 'top top',
+          end: `+=${cards.length * 420}`,
+          pin: true,
+          scrub: 1,
+          anticipatePin: 1,
+        },
+      })
+
+      cards.forEach((card, index) => {
+        tl.to(card, { yPercent: 0, duration: 1, ease: 'none' }, index === 0 ? 0 : `+=${index === 1 ? 0.25 : 0.4}`)
+        if (index > 0) {
+          tl.to(
+            cards[index - 1],
+            { scale: 0.96, filter: 'brightness(0.8)', duration: 1, ease: 'none' },
+            '<'
+          )
+        }
+      })
+    })
+
+    return () => {
+      mm.revert()
+    }
+  }, [animated])
+
+  if (!animated) {
+    return (
+      <section className="pro-cardwrepper container">
+        <h3 className="home-titleheader">Our Projects</h3>
+        <div className="project-grid">
+          {projects.map((project) => (
+            <Link className="project-card" to={`/architectural-projects/${project.slug}`} key={project.slug}>
+              <VisualBlock tone={project.tone} label={project.title} />
+              <div className="project-content">
+                <h3>{project.title}</h3>
+                <p>{project.status}</p>
+                <span>Read More</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
   return (
-    <section className="pro-cardwrepper container">
+    <section className="pro-cardwrepper container project-scroll-section">
       <h3 className="home-titleheader">Our Projects</h3>
-      <div className="project-grid">
-        {projects.map((project) => (
-          <Link className="project-card" to={`/architectural-projects/${project.slug}`} key={project.slug}>
-            <VisualBlock tone={project.tone} label={project.title} />
-            <div className="project-content">
+      <div className="project-scroll-shell" ref={rootRef}>
+        {projectsPreview.map((project, index) => (
+          <Link
+            className={`project-scroll-card card-tone-${index + 1}`}
+            to={`/architectural-projects/${project.slug}`}
+            key={project.slug}
+            ref={(node) => {
+              cardsRef.current[index] = node
+            }}
+          >
+            <div className="project-scroll-media">
+              <VisualBlock tone={project.tone} label={project.title} />
+            </div>
+            <div className="project-scroll-content">
               <h3>{project.title}</h3>
-              <p>{project.status}</p>
-              <span>Read More</span>
+              <p>{project.text}</p>
+              <div className="project-scroll-meta">
+                <span>{project.status}</span>
+              </div>
+              <strong>Read Project →</strong>
             </div>
           </Link>
         ))}

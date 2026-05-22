@@ -11,7 +11,7 @@ export default function Home() {
           Arcwell Architecture is one stop solution for all your concerns. Wellbeing and wellness for all are our main goals. which we accomplish by taking a holistic approach, that involves everything from planning to completion.Our team of skilled professionals is committed to delivering exceptional workmanship on every project. With experience and a passion for excellence, we ensure that every detail is meticulously crafted to meet the highest standards of durability, functionality, and aesthetics.
         </p>
       </SectionIntro>
-      <ProjectsSection />
+      <ProjectsSection animated />
       <ContactStrip />
       <SectionIntro title="Our Approch">
         <p>
